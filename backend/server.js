@@ -8,7 +8,7 @@ const productRoutes = require("./routes/productRoutes");
 
 const cors = require("cors");
 const app = express();
-dotenv.config({path: path.join(__dirname, 'config', '.env')})
+dotenv.config({path: path.join(__dirname,'.env')})
 
 // Middleware
 app.use(bodyParser.json());
