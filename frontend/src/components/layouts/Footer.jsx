@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import logo from '../../assets/Images/AceLogo.png';
 import facebook from "../../assets/Images/facebook.png";
 import youtube from "../../assets/Images/youtube.png";
@@ -46,10 +47,10 @@ const Footer = () => {
             <div className="flex flex-col space-y-4">
               <h1 className="text-sm md:text-base xl:text-lg font-semibold">Company</h1>
               <div className="flex flex-col space-y-2 md:space-y-3">
-                <a href="#" className="text-xs md:text-sm xl:text-base hover:text-gray-600 transition-colors">Customer Support</a>
-                <a href="#" className="text-xs md:text-sm xl:text-base hover:text-gray-600 transition-colors">Blogs</a>
-                <a href="#" className="text-xs md:text-sm xl:text-base hover:text-gray-600 transition-colors">Terms & Conditions</a>
-                <a href="#" className="text-xs md:text-sm xl:text-base hover:text-gray-600 transition-colors">Privacy Policy</a>
+                <Link to="#" className="text-xs md:text-sm xl:text-base hover:text-gray-600 transition-colors">Customer Support</Link>
+                <Link to="#" className="text-xs md:text-sm xl:text-base hover:text-gray-600 transition-colors">Blogs</Link>
+                <Link to="#" className="text-xs md:text-sm xl:text-base hover:text-gray-600 transition-colors">Terms & Conditions</Link>
+                <Link to="#" className="text-xs md:text-sm xl:text-base hover:text-gray-600 transition-colors">Privacy Policy</Link>
               </div>
             </div>
 
@@ -57,10 +58,10 @@ const Footer = () => {
             <div className="flex flex-col space-y-4  ">
               <h1 className="text-sm md:text-base xl:text-lg font-semibold">Help</h1>
               <div className="flex flex-col space-y-2 md:space-y-3">
-                <a href="/about" className="text-xs md:text-sm xl:text-base hover:text-gray-600 transition-colors">About</a>
-                <a href="/products" className="text-xs md:text-sm xl:text-base hover:text-gray-600 transition-colors">Products</a>
-                <a href="/ProductEnquire" className="text-xs md:text-sm xl:text-base hover:text-gray-600 transition-colors">Product Enquiry</a>
-                <a href="/contact" className="text-xs md:text-sm xl:text-base hover:text-gray-600 transition-colors">Book A Demo</a>
+                <Link to="/about" className="text-xs md:text-sm xl:text-base hover:text-gray-600 transition-colors">About</Link>
+                <Link to="/products" className="text-xs md:text-sm xl:text-base hover:text-gray-600 transition-colors">Products</Link>
+                <Link to="/ProductEnquire" className="text-xs md:text-sm xl:text-base hover:text-gray-600 transition-colors">Product Enquiry</Link>
+                <Link to="/contact" className="text-xs md:text-sm xl:text-base hover:text-gray-600 transition-colors">Book A Demo</Link>
               </div>
             </div>
           </div>
