@@ -1,5 +1,7 @@
-import React from "react";
+import { useRef, useState } from "react";
 import Marquee from "react-fast-marquee";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
 import img0 from "../../assets/ClientImages/image-0.png";
 import img1 from "../../assets/ClientImages/image-1.png";
 import img2 from "../../assets/ClientImages/image-2.png";
@@ -27,30 +29,39 @@ import img23 from "../../assets/ClientImages/image-23.png";
 import img24 from "../../assets/ClientImages/image-24.png";
 import img25 from "../../assets/ClientImages/image-25.png";
 import img26 from "../../assets/ClientImages/image-26.png";
+import img27 from "../../assets/ClientImages/image-27.png";
+import img28 from "../../assets/ClientImages/image-28.png";
+import img29 from "../../assets/ClientImages/image-29.png";
 
 
 
 
 const ClientCarousel = () => {
-  const logos = [img0, img1, img2, img3, img4, img5,  img7, img8, img9, img10, img11,img12,img13,img14,img15,img16,img18,img19,img20,img21,img22,img23,img24,img25,];
+  const logos = [
+    img0, img1, img2, img3, img4, img5, img6, img7, img8, img9,
+    img10, img11, img12, img13, img14, img15, img16, img17, img18,
+    img19, img20, img21, img22, img23, img24, img25, img26, img27,
+    img28, img29,
+  ];
 
   return (
     <div className="px-5 lg:px-20 mt-10">
       <h1 className="text-center text-[22px] py-5 font-semibold">Our Clients</h1>
-      <div className=" py-4">
+
+      <div className="py-4">
         <Marquee
           gradient={false}
           speed={50}
-          pauseOnHover={false}
-          loop={0} 
+          pauseOnHover={true}
+          loop={0}
         >
           {logos.concat(logos).map((logo, index) => (
             <div key={index} className="flex items-center">
               <img
-  src={logo}
-  alt={`Client Logo ${index + 1}`}
-  className="w-32 h-20 mx-5 object-contain border border-gray-100 rounded-lg shadow-md p-2 bg-white mt-5 mb-5"
- />
+                src={logo}
+                alt={`Client Logo ${index + 1}`}
+                className="w-32 h-20 mx-5 object-contain border border-gray-100 rounded-lg shadow-md p-2 bg-white mt-5 mb-5 transition-transform duration-300 ease-in-out hover:scale-110"
+              />
             </div>
           ))}
         </Marquee>

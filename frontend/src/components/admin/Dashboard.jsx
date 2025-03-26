@@ -52,8 +52,6 @@ const Dashboard = () => {
   const getImageUrl = (product) => {
     if (product.imageUrl && Array.isArray(product.imageUrl) && product.imageUrl.length > 0) {
       return `${apiUrl}/${product.imageUrl[0]}`;
-    } else if (product.imageUrl && typeof product.imageUrl === 'string') {
-      return `${apiUrl}/${product.imageUrl}`;
     }
   };
 
@@ -132,11 +130,11 @@ const Dashboard = () => {
               className="border rounded-lg shadow-sm hover:shadow-md transition overflow-hidden"
             >
               <div className="relative h-48 overflow-hidden">
-                <img
+               <Link   to={`/product/${product._id}`} > <img
                   src={getImageUrl(product)}
                   alt={product.productName}
                   className="w-full h-full object-cover"
-                />
+                /></Link>
               </div>
 
               <div className="p-4 space-y-3">

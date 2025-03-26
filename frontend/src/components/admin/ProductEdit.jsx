@@ -165,6 +165,49 @@ const ProductEdit = () => {
         />
       </div>
 
+
+            {/* Benefits */}
+            <h3 className="text-[16px] mt-4">Benefits</h3>
+        {productData.benefits.map((benefit, index) => (
+          <div key={index} className="flex flex-col gap-3 px-2 mb-2">
+            <div>
+            <label className="block mb-2">Title :</label>
+            <input
+              type="text"
+              placeholder="Title"
+              value={benefit.title}
+              onChange={(e) => handleFieldChange(e, index, "benefits", "title")}
+              className="w-full p-2 border border-gray-300 rounded"
+            />
+            </div>
+
+           <div>
+           <label className="block mb-2">Description :</label>
+           <input
+              type="text"
+              placeholder="Description"
+              value={benefit.description}
+              onChange={(e) => handleFieldChange(e, index, "benefits", "description")}
+              className="w-full p-2 border border-gray-300 rounded"
+            />
+           </div>
+            <button
+              type="button"
+              onClick={() => removeField(index, "benefits")}
+              className="text-red-500 text-start"
+            >
+              Remove
+            </button>
+          </div>
+        ))}
+        <button
+          type="button"
+          onClick={() => addField("benefits")}
+          className="bg-black hover:bg-blue-400 text-white px-2 py-1 rounded text-[14px]"
+        >
+          Add Benefit
+        </button>
+
       <div>
       <label className="block mb-2">Who Needs This? :</label>
       <textarea
@@ -221,50 +264,10 @@ const ProductEdit = () => {
           </div>
         </div>
  
-        {/* Benefits */}
-        <h3 className="text-xl font-semibold mt-4">Benefits</h3>
-        {productData.benefits.map((benefit, index) => (
-          <div key={index} className="flex flex-col gap-3 px-2 mb-2">
-            <div>
-            <label className="block mb-2">Title :</label>
-            <input
-              type="text"
-              placeholder="Title"
-              value={benefit.title}
-              onChange={(e) => handleFieldChange(e, index, "benefits", "title")}
-              className="w-full p-2 border border-gray-300 rounded"
-            />
-            </div>
-
-           <div>
-           <label className="block mb-2">Description :</label>
-           <input
-              type="text"
-              placeholder="Description"
-              value={benefit.description}
-              onChange={(e) => handleFieldChange(e, index, "benefits", "description")}
-              className="w-full p-2 border border-gray-300 rounded"
-            />
-           </div>
-            <button
-              type="button"
-              onClick={() => removeField(index, "benefits")}
-              className="text-red-500"
-            >
-              Remove
-            </button>
-          </div>
-        ))}
-        <button
-          type="button"
-          onClick={() => addField("benefits")}
-          className="bg-black hover:bg-blue-400 text-white px-4 py-2 rounded"
-        >
-          Add Benefit
-        </button>
+  
  
         {/* customerTestimonials */}
-        <h3 className="text-xl font-semibold mt-4">Customer Testimonials</h3>
+        <h3 className="text-[16px] mt-4">Customer Testimonials</h3>
         {productData.customerTestimonials.map((testimonial, index) => (
           <div key={index} className="flex flex-col gap-3 px-2 mb-2">
             <div>
@@ -305,7 +308,7 @@ const ProductEdit = () => {
             <button
               type="button"
               onClick={() => removeField(index, "customerTestimonials")}
-              className="text-red-500"
+              className="text-red-500 text-start"
             >
               Remove
             </button>
@@ -314,13 +317,13 @@ const ProductEdit = () => {
         <button
           type="button"
           onClick={() => addField("customerTestimonials")}
-          className="bg-black hover:bg-blue-400 text-white px-4 py-2 rounded"
+          className="bg-black hover:bg-blue-400 text-white px-2 py-1 rounded text-[14px]"
         >
           Add Testimonial
         </button>
 
       {/* Plans */}
-        <h3 className="text-xl font-semibold mt-4">Plans</h3>
+        <h3 className="text-[16px] mt-4">Plans</h3>
         {productData.plans.map((plan, index) => (
           <div key={index} className="flex flex-col gap-3 px-2 mb-2">
             <div>
@@ -336,7 +339,7 @@ const ProductEdit = () => {
            <div>
            <label className="block mb-2">Plan Price</label>
            <input
-              type="number"
+              type="text"
               placeholder="Price"
               value={plan.price}
               onChange={(e) => handleFieldChange(e, index, "plans", "price")}
@@ -356,7 +359,7 @@ const ProductEdit = () => {
             <button
               type="button"
               onClick={() => removeField(index, "plans")}
-              className="text-red-500"
+              className="text-red-500 text-start"
             >
               Remove
             </button>
@@ -365,17 +368,29 @@ const ProductEdit = () => {
         <button
           type="button"
           onClick={() => addField("plans")}
-          className="bg-black hover:bg-blue-400 text-white px-4 py-2 rounded"
+          className="bg-black hover:bg-blue-400 text-white px-2 py-1 rounded text-[14px]"
         >
           Add Plan
         </button>
 
+
+        <div className="flex justify-between space-x-4 mt-4">
+          
         <button
           type="submit"
-          className="w-full bg-black text-white px-4 py-2 rounded hover:bg-green-600"
+          className="w-1/2 bg-black text-white px-4 py-2 rounded hover:bg-green-600"
         >
           Update Product
         </button>
+  <button
+    type="button"
+    onClick={() => window.location.href = "/dashboard"}
+    className="w-1/2 bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 text-[14px]"
+  >
+    Cancel
+  </button>
+</div>
+
       </form>
     </div>
   );

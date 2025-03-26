@@ -5,7 +5,7 @@ import CMS from "../../assets/Images/CMS1.png";
 import PMS from "../../assets/Images/PMS.png";
 import ClientCarousel from "../layouts/Clients";
 import { BiSolidRightArrowSquare } from "react-icons/bi";
-import Animation2 from "../../assets/gif/Landing1.mp4";
+import Animation2 from "../../assets/gif/Landingimg.mp4";
 import Aboutmp4 from "../../assets/gif/About.mp4";
 import Count from "../layouts/Count";
 import { Link } from "react-router-dom";
@@ -14,7 +14,7 @@ const HomePage = () => {
   return (
     <div className="w-full mx-auto justify-center items-center container">
     {/* <Header className=""/> */}
-      <section className="flex flex-col-reverse lg:flex-row items-center justify-between  px-6 sm:px-10 md:px-10 lg:pl-15  py-10 bg-[#FFF5F5]  ">
+      <section className="flex flex-col-reverse lg:flex-row items-center justify-between  px-6 sm:px-10 md:px-10 lg:pl-15  py-10 bg-[#FFF5F5]">
         <div className=" 3xl:justify-center 3xl:ml-100 2xl:ml-0 @desktop:ml-20 container  ">
           <div className="container flex w-full  xl:ml-10">
             <div className="text lg:text-left max-w-lg xl:ml-12 flex flex-col items lg:items-start">
@@ -48,7 +48,7 @@ const HomePage = () => {
 
             <div className="flex justify-center md:ml-20  md:w-80 lg:w-110 xl:w-120 xl:h-120 xl:ml-30  ">
               <video
-                className="hidden sm:block lg:w-100  xl:w-130 xl:-mt-15 "
+                className="hidden sm:block lg:w-100  xl:w-130 xl:-mt-15 pb-10 "
                 autoPlay
                 loop
                 muted
@@ -211,7 +211,7 @@ const HomePage = () => {
         </div>
         <a
           href="/products"
-          className="w-full text-center gap-2 text-[14px] underline text-[#F7666F] flex items-center font-semibold sm:text-sm justify-center sm:mt-5"
+          className="w-full text-center gap-2 text-[14px] underline text-[#F7666F] flex items-center font-semibold sm:text-sm justify-center sm:mt-5 xl:text-[16px]"
         >
           View more
         </a>

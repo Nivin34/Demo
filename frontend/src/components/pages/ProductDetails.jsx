@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { TiArrowForward } from "react-icons/ti";
-import { FaRegStar } from "react-icons/fa6";
 import { FaCircleDot } from "react-icons/fa6";
 import { MdOutlineSubdirectoryArrowRight } from "react-icons/md";
 import { motion } from "framer-motion";
@@ -22,17 +21,16 @@ const ProductDetails = () => {
     fetchProduct();
   }, []);
 
-  // Auto scroll through product images
   useEffect(() => {
     if (!product) return;
-    
+
     const images = getProductImages();
     if (images.length <= 1) return;
-    
+
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 5000);
-    
+
     return () => clearInterval(interval);
   }, [product]);
 
@@ -83,9 +81,9 @@ const ProductDetails = () => {
 
   if (error) {
     return (
-      <motion.div 
-        initial={{ opacity: 0 }} 
-        animate={{ opacity: 1 }} 
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         className="text-center text-red-500 my-10 p-6 bg-red-50 rounded-lg shadow"
       >
         {error}
@@ -96,49 +94,48 @@ const ProductDetails = () => {
   const productImage = getProductImage();
   const productImages = getProductImages();
 
-  // Animation variants
+  // Animation
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
-  const staggerChildren = {
+  const stagger = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        stagger: 0.2,
+      },
+    },
   };
 
   return (
     <div className="container mx-auto p-6 overflow-hidden">
-      {/* Hero Section */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         className="flex flex-col md:flex-row items-center justify-evenly bg-gradient-to-br from-[#f0f2fa] to-[#e5e8f4] p-6 rounded-lg shadow-lg"
       >
-        <motion.div 
-          className="md:w-1/2 text-left order-2 md:order-1 w-full"
+        <motion.div
+          className="md:w-1/2 text-left order-2 md:order-1 w-full overflow-hidden"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3, duration: 0.5 }}
         >
           <h2 className="lg:text-xl xl:text-2xl font-bold mb-4 relative inline-block">
             {product.productName || "Unnamed Product"}
-            <motion.span 
+            <motion.span
               className="absolute bottom-0 left-0 h-1 bg-blue-500 rounded"
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
               transition={{ delay: 0.8, duration: 0.6 }}
             />
           </h2>
-          <motion.div 
-            className="text-[12px] lg:text-base space-y-2"
-            variants={staggerChildren}
+          <motion.div
+            className="text-[12px] lg:text-base space-y-2 overflow-hidden overflow-y-hidden"
+            variants={stagger}
             initial="hidden"
             animate="visible"
           >
@@ -147,34 +144,29 @@ const ProductDetails = () => {
                   .split(".")
                   .filter((des) => des.trim())
                   .map((des, index) => (
-                    <motion.p 
-                      key={index} 
-                      className="flex items-start gap-2"
+                    <motion.p
+                      key={index}
+                      className="flex items-start"
                       variants={fadeIn}
                     >
                       <motion.span
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
-                        transition={{ delay: 0.4 + (index * 0.1) }}
+                        transition={{ delay: 0.4 + index * 0.1 }}
                       >
                         <TiArrowForward className="mt-1 md:mt-0.5 lg:mt-1 w-10 text-blue-500" />
                       </motion.span>
-                      <span className="text-gray-700">{des.trim()}.</span>
+                      <span className="text-gray-700 w-full">
+                        {des.trim()}.
+                      </span>
                     </motion.p>
                   ))
               : "No description available."}
           </motion.div>
 
-          <motion.div 
-            className="flex gap-5 md:mt-10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-          >
-            <motion.button
-              whileHover={{ scale: 1.05, backgroundColor: "#0bc5ea" }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-black text-[13px] px-2 md:px-4 md:py-2 md:text-sm rounded-lg mt-5 text-white hover:bg-cyan-500 transition duration-300"
+          <div className="flex gap-5 md:mt-10 py-5 px-3">
+            <button
+              className="bg-black text-[13px] px-2 md:px-4 md:py-2 md:text-sm rounded-lg mt-5 text-white hover:bg-cyan-500 transition duration-300 hover:scale-105"
               onClick={() => {
                 if (product?.productLink) {
                   window.open(product.productLink, "_blank");
@@ -184,22 +176,20 @@ const ProductDetails = () => {
               }}
             >
               Try Now
-            </motion.button>
+            </button>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-blue-500 text-[13px] md:text-sm px-4 py-2 rounded-lg mt-5 text-white hover:bg-blue-700 transition"
+            <button
+              className="bg-blue-500 text-[13px] md:text-sm px-4 py-2 rounded-lg mt-5 text-white hover:bg-blue-700 transition hover:scale-105"
               onClick={() => navigate("/contact")}
             >
               Book A Demo
-            </motion.button>
-          </motion.div>
+            </button>
+          </div>
         </motion.div>
-        
+
         {/* Image */}
-        <motion.div 
-          className="w-80 h-60 mb-10 md:h-auto md:w-96 md:ml-2 flex justify-center order-1 md:order-2 shadow-lg rounded-lg overflow-hidden shadow-blue-400"
+        <motion.div
+          className="w-80 h-60 mb-10 md:h-auto md:w-96 md:ml-5 md:-mt-10 lg:-mt-0 flex justify-center order-1 md:order-2 shadow-lg rounded-lg overflow-hidden shadow-blue-400"
           initial={{ opacity: 0, x: 50, rotate: -3 }}
           animate={{ opacity: 1, x: 0, rotate: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
@@ -214,14 +204,14 @@ const ProductDetails = () => {
       </motion.div>
 
       {/* Why Choose Section */}
-      <motion.div 
-        className="mt-16 w-full mx-auto text-center"
+      <motion.div
+        className="mt-16 w-full mx-auto text-center overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={fadeIn}
       >
-        <motion.h1 
+        <motion.h1
           className="md:text-xl lg:text-2xl font-semibold relative inline-block"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -230,16 +220,17 @@ const ProductDetails = () => {
           Why Choose{" "}
           <span className="text-blue-600">
             {product.productName || "This Product"}
-          </span>?
-          <motion.div 
+          </span>
+          ?
+          <motion.div
             className="h-1 w-24 bg-blue-500 mx-auto mt-2 rounded-full"
             initial={{ width: 0 }}
             whileInView={{ width: "100px" }}
             transition={{ delay: 0.3, duration: 0.6 }}
           />
         </motion.h1>
-        <motion.p 
-          className="mt-5 text-gray-700 max-w-3xl mx-auto text-[12px] sm:text-sm lg:text-xl"
+        <motion.p
+          className="mt-5 text-gray-700 max-w-3xl mx-auto text-[12px] sm:text-sm lg:text-lg overflow-hidden"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
@@ -249,9 +240,9 @@ const ProductDetails = () => {
       </motion.div>
 
       {/* Benefits Section */}
-      <motion.div 
+      <motion.div
         className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-col-3 max-w-7xl mx-auto xl:py-5 pb-5"
-        variants={staggerChildren}
+        variants={stagger}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
@@ -264,8 +255,9 @@ const ProductDetails = () => {
               variants={fadeIn}
               whileHover={{
                 y: -5,
-                boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                transition: { duration: 0.3 }
+                boxShadow:
+                  "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                transition: { duration: 0.3 },
               }}
               onMouseEnter={() => setHoveredBenefitIndex(index)}
               onMouseLeave={() => setHoveredBenefitIndex(null)}
@@ -276,38 +268,40 @@ const ProductDetails = () => {
                 animate={{ opacity: hoveredBenefitIndex === index ? 0.4 : 0 }}
                 transition={{ duration: 0.3 }}
               />
-              
+
               <motion.div
                 className="absolute top-0 left-0 w-2 h-full bg-blue-500"
                 initial={{ height: 0 }}
-                animate={{ height: hoveredBenefitIndex === index ? "100%" : "0%" }}
+                animate={{
+                  height: hoveredBenefitIndex === index ? "100%" : "0%",
+                }}
                 transition={{ duration: 0.3 }}
               />
-              
+
               <h3 className="mt-4 text-[14px] md:text-[16px] lg:text-lg font-semibold text-gray-800">
                 {benefit.title}
               </h3>
-              <p className="mt-2 text-gray-600 text-[12px] md:text-sm relative z-10">{benefit.description}</p>
+              <p className="mt-2 text-gray-600 text-[12px] md:text-sm relative z-10">
+                {benefit.description}
+              </p>
             </motion.div>
           ))
         ) : (
-          <motion.div 
-            className="col-span-3 text-center text-gray-500"
-          >
+          <motion.div className="col-span-3 text-center text-gray-500">
             No benefits available for this product.
           </motion.div>
         )}
       </motion.div>
 
       {/* Who Needs Section */}
-      <motion.div 
-        className="mt-16 w-full mx-auto text-center flex flex-col"
+      <motion.div
+        className="mt-16 w-full mx-auto text-center flex flex-col overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={fadeIn}
       >
-        <motion.h1 
+        <motion.h1
           className="md:text-xl lg:text-2xl font-semibold relative inline-block mx-auto"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -316,24 +310,25 @@ const ProductDetails = () => {
           Who Needs{" "}
           <span className="text-blue-600">
             {product.productName || "This Product"}
-          </span>?
-          <motion.div 
+          </span>
+          ?
+          <motion.div
             className="h-1 w-24 bg-blue-500 mx-auto mt-2 rounded-full"
             initial={{ width: 0 }}
             whileInView={{ width: "100px" }}
             transition={{ delay: 0.3, duration: 0.6 }}
           />
         </motion.h1>
-        <motion.div 
-          className="mt-8 text-gray-800 max-w-3xl mx-auto flex flex-col text-xl"
-          variants={staggerChildren}
+        <motion.div
+          className="mt-8 text-gray-800 max-w-3xl mx-auto flex flex-col text-xl overflow-hidden"
+          variants={stagger}
         >
           {product.who_need_des
             ? product.who_need_des
                 .split(".")
                 .filter((sentence) => sentence.trim())
                 .map((sentence, index) => (
-                  <motion.div 
+                  <motion.div
                     key={index}
                     className="flex gap-3 w-full py-2 text-[14px] md:text-[16px]"
                     variants={fadeIn}
@@ -342,7 +337,7 @@ const ProductDetails = () => {
                     <motion.span
                       initial={{ scale: 0.8, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
-                      transition={{ delay: 0.2 + (index * 0.1) }}
+                      transition={{ delay: 0.2 + index * 0.1 }}
                       className="text-blue-500"
                     >
                       <MdOutlineSubdirectoryArrowRight />
@@ -357,30 +352,30 @@ const ProductDetails = () => {
       </motion.div>
 
       {/* Product Images */}
-      <motion.div 
+      <motion.div
         className="mt-16 w-full mx-auto text-center"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={fadeIn}
       >
-        <motion.h1 
+        <motion.h1
           className="text-lg lg:text-2xl font-semibold md:mb-6 relative inline-block"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
           Product Images
-          <motion.div 
+          <motion.div
             className="h-1 w-24 bg-blue-500 mx-auto mt-2 rounded-full"
             initial={{ width: 0 }}
             whileInView={{ width: "80px" }}
             transition={{ delay: 0.3, duration: 0.6 }}
           />
         </motion.h1>
-        <motion.div 
+        <motion.div
           className="flex flex-wrap gap-4 justify-center py-10"
-          variants={staggerChildren}
+          variants={stagger}
         >
           {productImages.length > 0 ? (
             productImages.map((img, index) => (
@@ -388,24 +383,22 @@ const ProductDetails = () => {
                 key={index}
                 className="w-72 h-52 md:w-80 md:h-56 rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-transform duration-300 ease-in-out transform hover:scale-105 relative group z-20"
                 variants={fadeIn}
-                whileHover={{ 
-                  y: -8, 
-                  transition: { duration: 0.3 } 
+                whileHover={{
+                  y: -8,
+                  transition: { duration: 0.3 },
                 }}
               >
                 <img
                   src={img}
-                  alt={`${product.productName || "Product"} - Image ${index + 1}`}
+                  alt={`${product.productName || "Product"} - Image ${
+                    index + 1
+                  }`}
                   className="w-full h-full border border-gray-100 object-center transition-all transform hover:scale-150"
                 />
-               
               </motion.div>
             ))
           ) : (
-            <motion.p 
-              className="text-gray-500"
-              variants={fadeIn}
-            >
+            <motion.p className="text-gray-500" variants={fadeIn}>
               No images available.
             </motion.p>
           )}
@@ -413,30 +406,30 @@ const ProductDetails = () => {
       </motion.div>
 
       {/* Testimonials Section */}
-      <motion.div 
+      <motion.div
         className="mt-16 w-full mx-auto text-center"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={fadeIn}
       >
-        <motion.h1 
+        <motion.h1
           className="text-lg md:text-lg lg:text-2xl font-semibold relative inline-block"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
           What Our Customers Say
-          <motion.div 
+          <motion.div
             className="h-1 w-24 bg-blue-500 mx-auto mt-2 rounded-full"
             initial={{ width: 0 }}
             whileInView={{ width: "100px" }}
             transition={{ delay: 0.3, duration: 0.6 }}
           />
         </motion.h1>
-        <motion.div 
+        <motion.div
           className="md:mt-8 grid gap-8 md:grid-cols-3 max-w-7xl mx-auto py-5"
-          variants={staggerChildren}
+          variants={stagger}
         >
           {product.customerTestimonials &&
           product.customerTestimonials.length > 0 ? (
@@ -445,20 +438,13 @@ const ProductDetails = () => {
                 key={index}
                 className="shadow-lg p-6 text-center bg-white rounded-lg border border-gray-100 hover:shadow-xl transition overflow-hidden"
                 variants={fadeIn}
-                whileHover={{ 
+                whileHover={{
                   y: -5,
-                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                  transition: { duration: 0.3 }
+                  boxShadow:
+                    "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                  transition: { duration: 0.3 },
                 }}
               >
-                {/* <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="text-blue-500 text-4xl mb-2 opacity-20 font-serif"
-                >
-                  "
-                </motion.div> */}
                 <p className="text-gray-700 italic">
                   "{testimonial.description}"
                 </p>
@@ -471,7 +457,7 @@ const ProductDetails = () => {
               </motion.div>
             ))
           ) : (
-            <motion.div 
+            <motion.div
               className="col-span-3 text-center text-gray-500"
               variants={fadeIn}
             >
@@ -482,30 +468,30 @@ const ProductDetails = () => {
       </motion.div>
 
       {/* Product Plans Section */}
-      <motion.div 
+      <motion.div
         className="mt-16 w-full mx-auto text-center"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={fadeIn}
       >
-        <motion.h1 
+        <motion.h1
           className="text-lg lg:text-2xl font-semibold relative inline-block"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
           Our Product Plans
-          <motion.div 
+          <motion.div
             className="h-1 w-24 bg-blue-500 mx-auto mt-2 rounded-full"
             initial={{ width: 0 }}
             whileInView={{ width: "80px" }}
             transition={{ delay: 0.3, duration: 0.6 }}
           />
         </motion.h1>
-        <motion.div 
-          className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto py-5"
-          variants={staggerChildren}
+        <motion.div
+          className="w-full mx-auto mt-12 grid gap-y-8  py-5 justify-center items-center text-center md:grid-cols-2 lg:grid-cols-3"
+          variants={stagger}
         >
           {product.plans && product.plans.length > 0 ? (
             product.plans.map((plan, index) => (
@@ -513,10 +499,11 @@ const ProductDetails = () => {
                 key={index}
                 className="max-w-sm mx-auto bg-white border border-gray-200 rounded-2xl shadow-lg p-6 w-70 hover:shadow-xl transition relative overflow-hidden"
                 variants={fadeIn}
-                whileHover={{ 
+                whileHover={{
                   y: -8,
-                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                  transition: { duration: 0.3 }
+                  boxShadow:
+                    "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                  transition: { duration: 0.3 },
                 }}
               >
                 <motion.div
@@ -526,35 +513,32 @@ const ProductDetails = () => {
                   transition={{ delay: 0.3, duration: 0.6 }}
                 />
                 <div className="flex justify-between">
-                  <h2 className="text-xl font-bold text-gray-800">{plan.name}</h2>
-                  {/* <motion.span 
-                    className="bg-blue-200 rounded-full text-sm items-center p-2 text-blue-700"
-                    whileHover={{ rotate: 360, transition: { duration: 0.6 } }}
-                  >
-                    <FaRegStar />
-                  </motion.span> */}
+                  <h2 className="text-xl font-bold text-gray-800">
+                    {plan.name}
+                  </h2>
                 </div>
 
                 <p className="text-sm text-gray-500 mt-5">
                   Perfect for unlocking{" "}
-                  <span className="text-blue-600 ">{plan.name}</span>{" "}
-                  benefits
+                  <span className="text-blue-600 ">{plan.name}</span> benefits
                 </p>
-                <motion.p 
+                <motion.p
                   className="text-2xl font-bold text-gray-800 mt-4"
                   initial={{ scale: 0.9 }}
                   whileInView={{ scale: 1 }}
                   transition={{ delay: 0.2, duration: 0.5 }}
                 >
-                  ₹{plan.price}
-                  <span className="text-sm font-normal text-gray-500">
-                    /monthly
-                  </span>
+                  ₹{String(plan.price).split("/")[0]}
+                  {plan.price.includes("/") && (
+                    <span className="text-sm font-normal text-gray-500">
+                      /{String(plan.price).split("/")[1]}
+                    </span>
+                  )}
                 </motion.p>
 
-                <motion.div 
+                <motion.div
                   className="mt-5 text-gray-700 max-w-3xl mx-auto"
-                  variants={staggerChildren}
+                  variants={stagger}
                 >
                   {plan.features ? (
                     <div className="flex flex-col gap-2">
@@ -570,13 +554,15 @@ const ProductDetails = () => {
                             whileInView={{ x: 0, opacity: 1 }}
                             transition={{ delay: 0.1 * index }}
                           >
-                            <motion.span 
+                            <motion.span
                               className="mt-0.5 text-blue-600 text-[12px]"
                               whileHover={{ scale: 1.2 }}
                             >
                               <FaCircleDot />
                             </motion.span>
-                            <span className="text-[12px]">{sentence.trim()}</span>
+                            <span className="text-[12px]">
+                              {sentence.trim()}
+                            </span>
                           </motion.div>
                         ))}
                     </div>
@@ -587,7 +573,7 @@ const ProductDetails = () => {
               </motion.div>
             ))
           ) : (
-            <motion.div 
+            <motion.div
               className="col-span-3 text-center text-gray-500"
               variants={fadeIn}
             >

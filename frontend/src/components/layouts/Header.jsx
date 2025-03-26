@@ -28,7 +28,7 @@ export default function Header() {
            <span className=" mt-3  flex text-sm sm:text-base md:mt-1  font-semibold md:font-normal md:text-[15px] xl:font-semibold">ACE <span className='md:hidden'>.in</span> <span className='hidden ml-2 md:block'>Software Solutions Pvt. Ltd</span></span>
           </div>
           </Link> 
-          <a href="/contact" className='lg:hidden font-bold text-[10px] px-1 rounded bg-black text-white py-1 items-center ml-40 sm:ml-70'>Book A Demo</a>
+          <a href="/contact" className='lg:hidden font-bold text-[12px] px-1 rounded bg-black text-white py-1 items-center ml-40 sm:ml-70'>Book A Demo</a>
           <div className="flex items-center lg:hidden md:justify-end">
             <DisclosureButton className="relative inline-flex items-center justify-center rounded-md p-2 gap-3 text-gray-600 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white">
               <HiMenuAlt3 className="block justify-end size-6 group-data-open:hidden font-black" aria-hidden="true"/>

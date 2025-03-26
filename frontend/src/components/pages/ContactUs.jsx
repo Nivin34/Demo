@@ -173,7 +173,7 @@ const ContactUs = () => {
           </div>
 
           {/* Right */}
-          <div className="hidden lg:block md:w-1/3 md:pl-6 mt-6 md:mt-2">
+          <div className="hidden lg:block md:w-1/3 md:pl-6 mt-6 md:mt-2 overflow-hidden">
             <h3 className="text-xl font-semibold">Direct Contacts</h3>
             <p className="text-gray-600 text-sm">
               Call or Schedule a video conference
@@ -186,7 +186,7 @@ const ContactUs = () => {
               <MdOutlineMail className="mt-1" />
               sales@acesoft.in
             </p>
-            <div className="mt-4 space-y-3">
+            <div className="mt-4 space-y-3 overflow-hidden px-3 py-2">
               <div className="bg-[#f4f5f583] border border-gray-200 p-3 rounded items-center  hover:shadow-gray-200 hover:shadow-xl hover:scale-105 transition">
                 <div className="rounded flex items-center gap-4">
                   <HiUserGroup className="text-2xl text-[#f78566]" />
@@ -224,18 +224,14 @@ const ContactUs = () => {
 
             <div className="h-0.5 w-2/4 bg-gray-300 rounded-2xl mt-3 mx-auto"></div>
             
-        <div className="flex flex-row  gap-5 w-full  border bg-[#f4f5f583] border-gray-200  p-4 rounded-lg shadow-md mt-5 hover:shadow-gray-200 hover:shadow-xl hover:scale-105 transition" >
-      <div >
-      <FaLocationDot className="text-2xl text-bold relative  text-red-400 z-20" />
-      <span className="w-2 h-2 ml-2 rotate-x-45 -mt-1 bg-gray-500 rounded-full absolute z-0"></span>
-      </div>
-          <div>
-            {/* <p className="text-sm font-medium text-gray-500">Visit Us</p> */}
-            <p className=" text-[14px]  text-gray-600">
-            #306, 2nd Floor NSIC - Software Technology Business Park B 24, Guindy Industrial Estate Ekkaduthangal, Chennai - 600032
-            </p>
-          </div>
-        </div>
+            <div className="bg-[#f4f5f583] border border-gray-200 p-3 mt-10 rounded items-center  hover:shadow-gray-200 hover:shadow-xl hover:scale-105 transition mx-3 overflow-hidden">
+                <div className="flex items-center gap-3">
+                  <FaLocationDot className="text-2xl text-[#F7666F]"/>
+                </div>
+                <p className="text-gray-600 text-sm ml-10 px-2 -mt-5">
+                #306, 2nd Floor NSIC - Software Technology Business Park B 24, Guindy Industrial Estate Ekkaduthangal, Chennai - 600032
+                </p>
+              </div>
           </div>
         </div>
       </div>

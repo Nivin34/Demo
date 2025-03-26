@@ -89,7 +89,7 @@ const ProductUpload = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 border border-gray-200 rounded-lg shadow-lg mt-10">
+    <div className="max-w-3xl mx-auto p-6 md:border border-gray-200 rounded-lg sm:shadow-lg mt-10 ">
       <h2 className="text-2xl font-bold text-center mb-6">Upload Product</h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         <input
@@ -123,6 +123,47 @@ const ProductUpload = () => {
           onChange={handleChange}
           className="w-full p-2 border border-gray-300 rounded"
         />
+      
+      <h3 className=" text-[16px] md:text-lg">Benefits</h3>
+        {productData.benefits.map((benefit, index) => (
+          <div
+            key={index}
+            className="flex flex-col gap-3 px-2  space-x-2 items-center mb-2"
+          >
+            <input
+              type="text"
+              placeholder="Title"
+              value={benefit.title}
+              onChange={(e) => handleFieldChange(e, index, "benefits", "title")}
+              className="w-full p-2 border border-gray-300 rounded"
+            />
+            <input
+              type="text"
+              placeholder="Description"
+              value={benefit.description}
+              onChange={(e) =>
+                handleFieldChange(e, index, "benefits", "description")
+              }
+              className="w-full p-2 border border-gray-300 rounded"
+            />
+            <button
+              type="button"
+              onClick={() => removeField(index, "benefits")}
+              className="text-red-500 flex justify-start w-full"
+            >
+              Remove
+            </button>
+          </div>
+        ))}
+        <button
+          type="button"
+          onClick={() => addField("benefits")}
+          className="bg-black hover:bg-blue-500 text-white px-2 py-1.5 rounded text-sm"
+        >
+          Add Benefit
+        </button>
+       
+
         <textarea
           name="who_need_des"
           placeholder="Who Needs This?"
@@ -182,46 +223,10 @@ const ProductUpload = () => {
           </div>
         </div>
 
-        <h3 className="text-xl font-semibold mt-4">Benefits</h3>
-        {productData.benefits.map((benefit, index) => (
-          <div
-            key={index}
-            className="flex flex-col gap-3 px-2  space-x-2 items-center mb-2"
-          >
-            <input
-              type="text"
-              placeholder="Title"
-              value={benefit.title}
-              onChange={(e) => handleFieldChange(e, index, "benefits", "title")}
-              className="w-full p-2 border border-gray-300 rounded"
-            />
-            <input
-              type="text"
-              placeholder="Description"
-              value={benefit.description}
-              onChange={(e) =>
-                handleFieldChange(e, index, "benefits", "description")
-              }
-              className="w-full p-2 border border-gray-300 rounded"
-            />
-            <button
-              type="button"
-              onClick={() => removeField(index, "benefits")}
-              className="text-red-500 flex justify-start w-full"
-            >
-              Remove
-            </button>
-          </div>
-        ))}
-        <button
-          type="button"
-          onClick={() => addField("benefits")}
-          className="bg-black hover:bg-blue-500 text-white px-4 py-2 rounded"
-        >
-          Add Benefit
-        </button>
 
-        <h3 className="text-xl font-semibold mt-4">Customer Testimonials</h3>
+
+         {/* Customer Testimonials */}
+        <h3 className="text-[16px] md:text-lg mt-4">Customer Testimonials</h3>
         {productData.customerTestimonials.map((testimonial, index) => (
           <div
             key={index}
@@ -280,12 +285,12 @@ const ProductUpload = () => {
         <button
           type="button"
           onClick={() => addField("customerTestimonials")}
-          className="bg-black hover:bg-blue-500 text-white px-4 py-2 rounded"
+          className="bg-black hover:bg-blue-500 text-white px-2 py-1.5 rounded text-sm"
         >
           Add Testimonial
         </button>
 
-        <h3 className="text-xl font-semibold mt-4">Plans</h3>
+        <h3 className="text-lg font-semibold mt-4">Plans</h3>
         {productData.plans.map((plan, index) => (
           <div
             key={index}
@@ -299,7 +304,7 @@ const ProductUpload = () => {
               className="w-full p-2 border border-gray-300 rounded"
             />
             <input
-              type="number"
+              type="text"
               placeholder="Price"
               value={plan.price}
               onChange={(e) => handleFieldChange(e, index, "plans", "price")}
@@ -324,17 +329,28 @@ const ProductUpload = () => {
         <button
           type="button"
           onClick={() => addField("plans")}
-          className="bg-black hover:bg-blue-500 text-white px-4 py-2 rounded"
+          className="bg-black hover:bg-blue-500 text-white px-2 py-1.5 rounded text-[14px]"
         >
           Add Plan
         </button>
 
+        <div className="flex justify-between space-x-4 mt-4">
         <button
-          type="submit"
-          className="w-full bg-black text-white px-4 py-2 rounded hover:bg-green-600"
-        >
-          Upload Product
-        </button>
+    type="submit"
+    className="w-1/2 bg-black text-white px-4 py-2 rounded hover:bg-green-600 text-[14px]"
+  >
+    Upload Product
+  </button>
+  <button
+    type="button"
+    onClick={() => window.location.href = "/dashboard"}
+    className="w-1/2 bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 text-[14px]"
+  >
+    Cancel
+  </button>
+
+</div>
+
       </form>
     </div>
   );

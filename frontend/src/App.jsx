@@ -10,6 +10,7 @@ import ProductDetails from "./components/pages/ProductDetails"
 import Dashboard from "./components/admin/Dashboard"
 import ProductUpload from "./components/admin/ProductUpload"
 import ProductEdit from "./components/admin/ProductEdit"
+import BackToTop from "./components/layouts/BackToTop"
 
 function App() {
 
@@ -28,8 +29,8 @@ function App() {
      <Route path="/dashboard" element={<Dashboard/>} />
      <Route path ="/product/upload" element={<ProductUpload/>} />
      <Route path ="/product/edit/:id" element={<ProductEdit/>} />
-     
     </Routes>
+    <BackToTop/>
     <Footer/>
     </BrowserRouter>
 

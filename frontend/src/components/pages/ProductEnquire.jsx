@@ -184,7 +184,7 @@ export default function ProductEnquire() {
             <label className="block text-sm font-medium text-gray-700">
               Product Interested:
             </label>
-            <div className="grid grid-cols-2 gap-4 mt-2">
+            <div className="grid md:grid-cols-2 gap-4 mt-2">
               {[
                 "Aceprofit Compact ERP",
                 "APQP",
@@ -233,7 +233,7 @@ export default function ProductEnquire() {
           <div className="flex">
             <button
               type="submit"
-              className="bg-red-400 text-white px-5 py-2.5 rounded-md hover:bg-green-500 focus:outline-none focus:ring-2"
+              className="bg-red-400 text-white text-[14px] px-3 py-2 md:px-5 md:py-2.5 rounded-md hover:bg-green-500 focus:outline-none focus:ring-2"
               disabled={loading}
             >
               {loading ? "Submitting..." : "Submit"}
