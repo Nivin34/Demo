@@ -95,8 +95,8 @@ const HomePage = () => {
               Solutions and SAAS model products for small, medium and large
               industries and corporate.
             </p>
-            <a
-              href="/about"
+           <Link to="/about">
+           <a
               className="mt-5 gap-2  text-[#F7666F] font-semibold text-[12px] text-sm flex lg:mt-10 xl:text-[16px]"
             >
               Read more{" "}
@@ -104,6 +104,7 @@ const HomePage = () => {
                 <FaArrowAltCircleRight className="mt-1 " />
               </span>
             </a>
+           </Link>
           </div>
         </div>
       </div>
