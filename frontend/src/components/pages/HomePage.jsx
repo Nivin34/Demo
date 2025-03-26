@@ -153,12 +153,15 @@ const HomePage = () => {
                     </span>
                   </p>
                 </div>
+
+                <Link to="/products">
                 <a
-                  href="/products"
                   className="mt-3 gap-2 text-[12px] text-[#F7666F] font-semibold sm:text-sm flex lg:mt-10"
                 >
                   Read more <FaArrowAltCircleRight className="mt-1" />
                 </a>
+                </Link>
+                
               </div>
             </div>
             <div className="hidden justify-center mt-10 sm:block sm:mt-15 sm:w-90 mx-auto md:w-120 md:mr-5 lg:w-150 xl:mr-30 xl:w-220 xl:h-100 overflow-hidden">
@@ -201,21 +204,20 @@ const HomePage = () => {
                 </span>
               </p>
 
-              <a
-                href="/products"
-                className="mt-3 text-[12px] text-[#F7666F] font-semibold sm:text-sm flex items-center gap-2 lg:mt-5 xl:mt-10"
-              >
+              <Link to="/products">
+              <a className="mt-3 text-[12px] text-[#F7666F] font-semibold sm:text-sm flex items-center gap-2 lg:mt-5 xl:mt-10">
                 Read more <FaArrowAltCircleRight className="mt-1 " />
               </a>
+              </Link>
             </div>
           </div>
         </div>
-        <a
-          href="/products"
-          className="w-full text-center gap-2 text-[14px] underline text-[#F7666F] flex items-center font-semibold sm:text-sm justify-center sm:mt-5 xl:text-[16px]"
-        >
+
+       <Link to="/products">
+       <a className="w-full text-center gap-2 text-[14px] underline text-[#F7666F] flex items-center font-semibold sm:text-sm justify-center sm:mt-5 xl:text-[16px]">
           View more
         </a>
+       </Link>
       </div>
 
       <ClientCarousel />
