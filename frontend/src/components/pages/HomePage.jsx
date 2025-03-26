@@ -38,11 +38,10 @@ const HomePage = () => {
                 and aerospace to manufacturing and trading, we deliver smart,
                 scalable, and secure software tailored to your industry’s needs.
               </p>
-             <Link to="/contact">
-             <button className="flex items-center justify-start self-start mt-5 px-0 py-2 gap-3 text-sm text-[#F7666F] font-bold transition-all  lg:mt-10 lg:text-lg xl:mt-20  xl:font-bold">
+              
+             <Link to="/contact" className="flex items-center justify-start self-start mt-5 px-0 py-2 gap-3 text-sm text-[#F7666F] font-bold transition-all  lg:mt-10 lg:text-lg xl:mt-20  xl:font-bold">
                 Contact Us{" "}
                 <BiSolidRightArrowSquare className="text-[20px] lg:text-xl" />
-              </button>
              </Link>
             </div>
 
@@ -95,15 +94,13 @@ const HomePage = () => {
               Solutions and SAAS model products for small, medium and large
               industries and corporate.
             </p>
-           <Link to="/about">
-           <a
-              className="mt-5 gap-2  text-[#F7666F] font-semibold text-[12px] text-sm flex lg:mt-10 xl:text-[16px]"
-            >
+
+           <Link to="/about"
+              className="mt-5 gap-2  text-[#F7666F] font-semibold text-[12px] text-sm flex lg:mt-10 xl:text-[16px]" >
               Read more{" "}
               <span>
                 <FaArrowAltCircleRight className="mt-1 " />
               </span>
-            </a>
            </Link>
           </div>
         </div>
@@ -154,14 +151,10 @@ const HomePage = () => {
                   </p>
                 </div>
 
-                <Link to="/products">
-                <a
-                  className="mt-3 gap-2 text-[12px] text-[#F7666F] font-semibold sm:text-sm flex lg:mt-10"
-                >
+                <Link to="/products" className="mt-3 gap-2 text-[12px] text-[#F7666F] font-semibold sm:text-sm flex lg:mt-10">
                   Read more <FaArrowAltCircleRight className="mt-1" />
-                </a>
                 </Link>
-                
+
               </div>
             </div>
             <div className="hidden justify-center mt-10 sm:block sm:mt-15 sm:w-90 mx-auto md:w-120 md:mr-5 lg:w-150 xl:mr-30 xl:w-220 xl:h-100 overflow-hidden">
@@ -204,20 +197,19 @@ const HomePage = () => {
                 </span>
               </p>
 
-              <Link to="/products">
-              <a className="mt-3 text-[12px] text-[#F7666F] font-semibold sm:text-sm flex items-center gap-2 lg:mt-5 xl:mt-10">
+      
+              <Link to="/products" className="mt-3 text-[12px] text-[#F7666F] font-semibold sm:text-sm flex items-center gap-2 lg:mt-5 xl:mt-10">
                 Read more <FaArrowAltCircleRight className="mt-1 " />
-              </a>
               </Link>
+
             </div>
           </div>
         </div>
 
-       <Link to="/products">
-       <a className="w-full text-center gap-2 text-[14px] underline text-[#F7666F] flex items-center font-semibold sm:text-sm justify-center sm:mt-5 xl:text-[16px]">
+
+       <Link  to="/products" className="w-full text-center gap-2 text-[14px] underline text-[#F7666F] flex items-center font-semibold sm:text-sm justify-center sm:mt-5 xl:text-[16px]">
           View more
-        </a>
-       </Link>
+        </Link>
       </div>
 
       <ClientCarousel />
