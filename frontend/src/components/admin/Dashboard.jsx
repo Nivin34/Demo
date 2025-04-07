@@ -5,6 +5,7 @@ import { IoAddCircle } from "react-icons/io5";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaRegEdit } from "react-icons/fa";
 import axios from "axios";
+import Header from "../layouts/Header";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const Dashboard = () => {
@@ -61,7 +62,9 @@ const Dashboard = () => {
     : products;
 
   return (
-    <div className="max-w-6xl mx-auto my-12 p-6 border-0 bg-white lg:border lg:border-gray-300 rounded-lg shadow-md">
+   <div>
+    <Header/>
+     <div className="max-w-6xl mx-auto my-12 p-6 border-0 bg-white lg:border lg:border-gray-300 rounded-lg shadow-md">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold text-gray-800">Product List</h2>
         <Link
@@ -178,6 +181,7 @@ const Dashboard = () => {
 
   
     </div>
+   </div>
   );
 };
 

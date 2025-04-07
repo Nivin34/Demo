@@ -7,7 +7,8 @@ import { TbPhoneCall } from "react-icons/tb";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6"; 
 import emailjs from "@emailjs/browser";
-
+import { MdOutlineSendToMobile } from "react-icons/md";
+import Header from "../layouts/Header";
 const ContactUs = () => {
   const form = useRef();
   const [emailError, setEmailError] = useState("");
@@ -54,6 +55,7 @@ const ContactUs = () => {
 
   return (
     <div>
+      <Header/>
       <div className=" mt-0 px-2 ">
       <h2 className=" sm:hidden w-full mx-auto text-center mt-10 mb-5 font-semibold underline text-xl">Contact Us</h2>
         <div className="flex flex-col md:flex-row p-10 rounded-lg border md:border-0 max-w-6xl mx-auto sm:mt-20 mb-20 justify-center">
@@ -178,11 +180,17 @@ const ContactUs = () => {
             <p className="text-gray-600 text-sm">
               Call or Schedule a video conference
             </p>
-            <p className="text-gray-700 mt-2 flex gap-2 hover:scale-105 transition">
+            <p className="text-gray-700 mt-2 flex gap-2 hover:scale-105 transition text-[14px]">
               <MdAddIcCall className="mt-1" />
-              +91 987654321
+              Support - 44 24795144 <br/>
+              Sales - 44 24795145
+
             </p>
-            <p className="text-gray-700 mt-2 flex gap-2 hover:scale-105 transition">
+            <p className="text-gray-700 mt-2 flex gap-2 hover:scale-105 transition text-[14px]">
+              <MdOutlineSendToMobile  className="mt-1" />
+              +91 97109 46806
+            </p>
+            <p className="text-gray-700 mt-2 flex gap-2 hover:scale-105 transition text-[14px]">
               <MdOutlineMail className="mt-1" />
               sales@acesoft.in
             </p>
@@ -222,9 +230,9 @@ const ContactUs = () => {
               </div>
             </div>
 
-            <div className="h-0.5 w-2/4 bg-gray-300 rounded-2xl mt-3 mx-auto"></div>
+            <div className="h-0.5 w-2/4 bg-gray-300 rounded-2xl  mx-auto"></div>
             
-            <div className="bg-[#f4f5f583] border border-gray-200 p-3 mt-10 rounded items-center  hover:shadow-gray-200 hover:shadow-xl hover:scale-105 transition mx-3 overflow-hidden">
+            <div className="bg-[#f4f5f583] border border-gray-200 p-3 mt-3 rounded items-center  hover:shadow-gray-200 hover:shadow-xl hover:scale-105 transition mx-3 overflow-hidden">
                 <div className="flex items-center gap-3">
                   <FaLocationDot className="text-2xl text-[#F7666F]"/>
                 </div>
@@ -239,10 +247,12 @@ const ContactUs = () => {
       {/* Contact Info */}
       <div className="flex flex-col lg:flex-row justify-center lg:justify-evenly lg:px-20 items-center gap-6 md:gap-5 lg:gap-5 lg:h-100 px-10 md:px-5 lg:hidden">
         <div className="flex flex-row items-center gap-5 w-full max-w-xs border p-4 rounded-lg shadow-md">
-          <TbPhoneCall className="text-2xl text-red-400" />
+          <TbPhoneCall className="text-2xl text-red-400 -mt-15" />
           <div>
             <p className="text-sm font-medium text-gray-500">Call Us</p>
-            <p className="font-semibold text-[16px] text-black">+91 9876543210</p>
+            <p className="font-semibold text-[14px] text-black">Support - 44 24795144 <br/>
+Sales - 44 24795145 <br/>
+Mobile - 97109 46806</p>
           </div>
         </div>
 
@@ -250,7 +260,7 @@ const ContactUs = () => {
           <MdOutlineMail className="text-2xl text-red-400" />
           <div>
             <p className="text-sm font-medium text-gray-500">Email Us</p>
-            <p className="font-semibold text-[16px] text-black">sales@acesoft.in</p>
+            <p className="font-semibold text-[14px] text-black">sales@acesoft.in</p>
           </div>
         </div>
 

@@ -1,25 +1,43 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation, Link } from "react-router-dom";
 import axios from "axios";
 import { TiArrowForward } from "react-icons/ti";
 import { FaCircleDot } from "react-icons/fa6";
 import { MdOutlineSubdirectoryArrowRight } from "react-icons/md";
 import { motion } from "framer-motion";
+import AboutPage1 from "./AboutPage1";
+import Header from "../layouts/Header";
+import Header1 from "../layouts/Header1";
+
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const ProductDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [hoveredBenefitIndex, setHoveredBenefitIndex] = useState(null);
+  const [showOtherProducts, setshowOtherProducts] = useState(false);
+  const [showNavbar, setshowNavbar] = useState(true);
+  const [showAbout, setShowAbout] = useState(false);
 
+ 
   useEffect(() => {
     fetchProduct();
-  }, []);
+    if (!location.state || !location.state.fromProductsPage) {
+      setshowOtherProducts(true);
+      setshowNavbar(false);
+      setShowAbout(true);
+    } else {
+      setshowOtherProducts(false); 
+      setshowNavbar(true);
+      setShowAbout(false);
+    }
+  }, [id, location]);
 
   useEffect(() => {
     if (!product) return;
@@ -111,7 +129,18 @@ const ProductDetails = () => {
   };
 
   return (
+    <div>
+       {showNavbar && (
+         <Header/>
+        )}
+
+{showOtherProducts && (
+        <Header1/>
+        )}
+ 
+
     <div className="container mx-auto p-6 overflow-hidden">
+       
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -490,7 +519,7 @@ const ProductDetails = () => {
           />
         </motion.h1>
         <motion.div
-          className="w-full mx-auto mt-12 grid gap-y-8  py-5 justify-center items-center text-center md:grid-cols-2 lg:grid-cols-3"
+          className="w-full mx-auto mt-12 grid gap-y-8  py-5 justify-center items-center text-center md:grid-cols-2 xl:grid-cols-4"
           variants={stagger}
         >
           {product.plans && product.plans.length > 0 ? (
@@ -574,7 +603,7 @@ const ProductDetails = () => {
             ))
           ) : (
             <motion.div
-              className="col-span-3 text-center text-gray-500"
+              className="col-span-3 text-center mx-auto xl:col-span-4 text-gray-500"
               variants={fadeIn}
             >
               No plans available for this product.
@@ -582,6 +611,19 @@ const ProductDetails = () => {
           )}
         </motion.div>
       </motion.div>
+
+
+      {showAbout && (
+         <div className="mt-32">
+         <AboutPage1/>
+         </div>
+        )}
+
+
+
+      
+
+    </div>
     </div>
   );
 };

@@ -8,12 +8,19 @@ import { AiTwotoneMessage } from "react-icons/ai";
 import { ImFlag } from "react-icons/im";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { RiCustomerService2Fill } from "react-icons/ri";
-import Vision from "../../assets/Images/vision2.jpeg";
+import Vision from "../../assets/Images/vision1.png";
 import Values from "../../assets/Images/values.png";
 import Mission from "../../assets/Images/mission.png";
+import Pic1 from "../../assets/Images/Rajagopalan.png";
+import Pic2 from "../../assets/Images/Rajasekaran.jpg";
+import Pic3 from "../../assets/Images/ABILASH1.png";
+import Pic4 from "../../assets/Images/Abishek.png";
+import Pic5 from "../../assets/Images/Anandh.jpg";
+
 import { FaUserTie } from "react-icons/fa6";
 
 import Count from "../layouts/Count";
+import Header from "../layouts/Header";
 
 const AboutPage = () => {
 
@@ -51,7 +58,10 @@ const AboutPage = () => {
   };
 
   return (
-    <div className="container w-full mx-auto">
+    
+    <div>
+      <Header/>
+       <div className="container w-full mx-auto">
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -152,9 +162,9 @@ const AboutPage = () => {
             className="w-80"
           >
             <div className="border border-gray-300 rounded-2xl overflow-hidden">
-              <img src={item.img} alt={item.title} className="w-full h-48 object-center" />
+              <img src={item.img} alt={item.title} className="w-full h-48 object-cover" />
             </div>
-            <h1 className="mt-4 text-[13px] sm:text-lg font-semibold">{item.title}</h1>
+            <h1 className="mt-4 text-[16px] sm:text-lg font-semibold">{item.title}</h1>
             <p className="mt-2 text-gray-600 text-[12px] sm:text-sm">{item.description}</p>
           </motion.div>
         ))}
@@ -220,49 +230,80 @@ const AboutPage = () => {
         </motion.div>
       </motion.div>
 
-      <motion.div 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={containerVariants}
-        className="bg-gray-100 mt-20 h-auto pb-10"
-      >
-        <h1 className="flex w-full justify-center py-5 font-semibold lg:text-[20px]">
-          Our Leadership Team
-        </h1>
+      <div className="bg-gray-100 mt-20 h-auto pb-16 px-10 sm:px-0">
+  <h1 className="flex w-full justify-center py-5 font-bold text-[20px] lg:text-[24px] text-gray-800 mt-10">
+  Our Leadership Team
+  </h1>
 
-        <motion.div 
-          variants={containerVariants}
-          className="mt-10 pb-3 justify-evenly items-center text-center flex flex-wrap gap-5"
+  <div className="lg:mt-0 px-5">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 lg:gap-3">
+      {[
+        {
+          name: "R Rajagopalan",
+          img: Pic1,
+          position: "Chairman of ACE Software Solutions Pvt. Ltd",
+          description:
+            "With over 30 years of experience in the automobile industry, specializing in Industrial Engineering, Production Planning, Shop Floor Systems, and Materials Management, he provides strategic inputs for the organizational growth of ASSPL.",
+        },
+        {
+          name: "S Rajasekaran",
+          img: Pic2,
+          position: "Managing Director of ACE Software Solutions Pvt. Ltd",
+          description:
+            "With over 25 years' experience in Materials Management & System Design and Finance, he is also the Founder & CEO of ASSPL, who leads the day-to-day functions on a strategic level with his domain expertise.",
+        },
+        {
+          name: "R Abilash  Chakaravarth",
+          img: Pic3,
+          position: "Board of Directors of ACE Software Solutions Pvt. Ltd",
+          description:
+            "With over 25 years' experience in Materials Management & System Design and Finance, he is also the Founder & CEO of ASSPL, who leads the day-to-day functions on a strategic level with his domain expertise.",
+        },
+        {
+          name: "R Abishek Karthik",
+          img: Pic4,
+          position: "Board of Directors of ACE Software Solutions Pvt. Ltd",
+          description:
+            "A Young Mechanical Engineering Graduate from Anna University and MBA in BITS Pilani with 5 years of experience in manufacturing sector provides functional and domain expertise on new product developments.",
+        },
+        {
+          name: "S Anandh",
+          img: Pic5,
+          position: "Technical Head of ACE Software Solutions Pvt. Ltd",
+          description:
+            "With 15+ years of expertise, the lead architect designs scalable and secure ERP systems for ACE Profit, optimizing processes, enhancing efficiency, and driving business growth.",
+        },
+      ].map((leader, index) => (
+        <div
+          key={index}
+          className="w-full bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 hover:scale-105 my-10"
         >
-          {[
-            { name: "R Rajagopalan", 
-              position: "Chairman of ACE Software Solutions Pvt. Ltd",
-              description: "With over 30 years of experience in the automobile industry, specializing in Industrial Engineering, Production Planning, Shop Floor Systems, and Materials Management, he provides strategic inputs for the organizational growth of ASSPL." },
-            { name: "S Rajasekaran", 
-              position: "Managing Director of ACE Software Solutions Pvt. Ltd", 
-              description: "With over 25 years' experience in Materials Management & System Design and Finance is also the Founder & CEO of ASSPL, who leads the day-to-day functions on a strategic level with his domain expertise." },
-            
-          ].map((leader, index) => (
-            <div
-            key={index}
-            className="w-70 h-auto bg-[#ffffff4f] rounded-lg py-5 border border-gray-200 flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition duration-300 hover:scale-105 xl:flex-row p-2 xl:w-150"
-          >
-         <div className="xl:flex-col xl:w-1/3">
-         <div className="w-52 h-20 rounded-full mx-auto flex justify-center items-center">
-              <FaUserTie className="w-16 h-16 text-gray-600" />
-            </div>         
-            <p className="w-full text-center font-semibold mt-3">{leader.name}</p>
-         </div>  
-            <div className="h-auto flex flex-col px- mt-2 overflow-hidden xl:w-1/2 xl:ml-10">
-              <p className="w-full text-center text-[12px] font-semibold xl:text-start">{leader.position}</p>
-              <p className="w-full text-center text-[12px] mt-5 xl:text-start text-gray-700">{leader.description}</p>
+          <div className="flex flex-col items-center p-5">
+            <div className="w-32 h-32 rounded-full overflow-hidden  shadow-lg shadow-gray-300 ">
+              {leader.img ? (
+                <img
+                  src={leader.img}
+                  alt={leader.name}
+                  className="w-full h-full object-center"
+                />
+              ) : (
+                <FaUserTie className="w-20 h-20 text-gray-500 mt-5 justify-center mx-auto" />
+              )}
             </div>
+            <h3 className="mt-4 text-lg font-semibold text-gray-800">{leader.name}</h3>
+            <p className="text-sm text-gray-600 mt-1 text-center">{leader.position}</p>
           </div>
-          ))}
-        </motion.div>
-      </motion.div>
+          <div className="px-4 pb-5 text-[13px] text-gray-700  leading-relaxed text-justify  ">
+            {leader.description}
+          </div>
+        </div>
+      ))}
     </div>
+  </div>
+</div>
+    </div>
+    </div>
+   
   );
 };
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Header from "../layouts/Header";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -89,7 +90,9 @@ const ProductUpload = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 md:border border-gray-200 rounded-lg sm:shadow-lg mt-10 ">
+   <div>
+    <Header/>
+     <div className="max-w-3xl mx-auto p-6 md:border border-gray-200 rounded-lg sm:shadow-lg mt-10 ">
       <h2 className="text-2xl font-bold text-center mb-6">Upload Product</h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         <input
@@ -329,23 +332,20 @@ const ProductUpload = () => {
         <button
           type="button"
           onClick={() => addField("plans")}
-          className="bg-black hover:bg-blue-500 text-white px-2 py-1.5 rounded text-[14px]"
-        >
+          className="bg-black hover:bg-blue-500 text-white px-2 py-1.5 rounded text-[14px]">
           Add Plan
         </button>
 
         <div className="flex justify-between space-x-4 mt-4">
         <button
     type="submit"
-    className="w-1/2 bg-black text-white px-4 py-2 rounded hover:bg-green-600 text-[14px]"
-  >
+    className="w-1/2 bg-black text-white px-4 py-2 rounded hover:bg-green-600 text-[14px]">
     Upload Product
   </button>
   <button
     type="button"
     onClick={() => window.location.href = "/dashboard"}
-    className="w-1/2 bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 text-[14px]"
-  >
+    className="w-1/2 bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 text-[14px]">
     Cancel
   </button>
 
@@ -353,6 +353,7 @@ const ProductUpload = () => {
 
       </form>
     </div>
+   </div>
   );
 };
 

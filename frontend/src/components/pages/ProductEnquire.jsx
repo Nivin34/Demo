@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import Header from "../layouts/Header";
 
 export default function ProductEnquire() {
   const [loading, setLoading] = useState(false);
@@ -81,7 +82,9 @@ export default function ProductEnquire() {
   };
 
   return (
-    <div className="min-h-screen py-12 px-4">
+    <div>
+      <Header/>
+      <div className="min-h-screen py-12 px-4">
       <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-8 border border-gray-200">
         <h1 className="md:text-3xl font-semibold text-center mb-6">
           Product Enquiry
@@ -241,6 +244,7 @@ export default function ProductEnquire() {
           </div>
         </form>
       </div>
+    </div>
     </div>
   );
 }

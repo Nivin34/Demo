@@ -20,7 +20,6 @@ const Count = () => {
       <p className="text-xl font-bold lg:text-5xl overflow-hidden">
       {inView && <CountUp key={inView} start={0} end={20} duration={5} />}+
       </p>
-
       <p className="text-gray-600 font-normal  text-sm lg:text-xl mr-2">Years</p>
     </div>
     <div>

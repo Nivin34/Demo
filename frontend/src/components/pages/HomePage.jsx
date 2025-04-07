@@ -13,7 +13,7 @@ const HomePage = () => {
   
   return (
     <div className="w-full mx-auto justify-center items-center container">
-    {/* <Header className=""/> */}
+    <Header/>
       <section className="flex flex-col-reverse lg:flex-row items-center justify-between  px-6 sm:px-10 md:px-10 lg:pl-15  py-10 bg-[#FFF5F5]">
         <div className=" 3xl:justify-center 3xl:ml-100 2xl:ml-0 @desktop:ml-20 container  ">
           <div className="container flex w-full  xl:ml-10">

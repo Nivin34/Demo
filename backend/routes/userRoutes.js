@@ -1,14 +1,23 @@
-const express = require("express");
-
+const express = require('express');
+const { authenticateToken, authorizeRole } = require('../middleware/auth');
 const router = express.Router();
 
-//admin
-router.get("/admin", (req, res) =>{
-    res.json({message:"admin"})
-} )
+router.get(
+  '/dashboard',
+  authenticateToken,
+  authorizeRole(['admin']),
+  (req, res) => {
+    res.json({ message: 'Welcome Admin!' });
+  }
+);
 
-router.get("/user", (req, res) =>{
-    res.json({message:"user"})
-} )
+router.get(
+  '/user-dashboard',
+  authenticateToken,
+  authorizeRole(['user', 'admin']),
+  (req, res) => {
+    res.json({ message: 'Welcome User!' });
+  }
+);
 
 module.exports = router;
